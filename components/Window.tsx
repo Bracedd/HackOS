@@ -4,7 +4,6 @@ import { useRef } from 'react'
 import Draggable from 'react-draggable'
 
 interface WindowProps {
-  id: string
   title: string
   isActive: boolean
   onClose: () => void
@@ -14,7 +13,6 @@ interface WindowProps {
 }
 
 export default function Window({ 
-  id, 
   title, 
   isActive, 
   onClose, 
@@ -55,4 +53,3 @@ export default function Window({
     </Draggable>
   )
 }
-
