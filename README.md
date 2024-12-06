@@ -7,8 +7,7 @@ Made with Next JS and uses all the hackclub themes and icons!
 ## Usage
 
 Simple!
-
 Just Go To
 
-[a link]((https://hackos.netlify.app/))
+[HackOS](https://hackos.netlify.app/)
 
