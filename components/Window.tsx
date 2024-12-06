@@ -1,4 +1,8 @@
+import Draggable from 'react-draggable';
+
+
 export default function Window({ 
+
     id, 
     title, 
     isActive, 
