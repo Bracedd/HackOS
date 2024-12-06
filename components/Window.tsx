@@ -1,11 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 import React, { useRef } from 'react';
 import Draggable from 'react-draggable';
 
-// Define the interface for the component props
 interface WindowProps {
-  id?: string; // Optional id
+  id: string;
   title: string;
   isActive: boolean;
   onClose: () => void;
@@ -14,27 +11,28 @@ interface WindowProps {
   children: React.ReactNode;
 }
 
-export default function Window({
-  id, // Explicitly include id, even if not used
+const Window: React.FC<WindowProps> = ({
+  id,
   title,
   isActive,
   onClose,
   onFocus,
   style,
-  children
-}: WindowProps) {
-  const nodeRef = useRef<HTMLDivElement>(null);
-  
+  children,
+}) => {
+  // UseRef to handle the DOM reference for draggable
+  const nodeRef = useRef<HTMLDivElement>(null); // Updated useRef type
+
   return (
+    
     <Draggable
-      nodeRef={nodeRef}
       handle=".window-header"
+      nodeRef={nodeRef} // Pass the ref to Draggable
       bounds="parent"
-      onMouseDown={onFocus}
+      onMouseDown={onFocus} // Focus the window on mouse down
     >
       <div
-        ref={nodeRef}
-        data-id={id} // Add data attribute if you want to use id
+        ref={nodeRef} // Attach ref to the div
         className={`window ${isActive ? 'shadow-2xl' : 'shadow-xl'}`}
         style={{
           ...style,
@@ -56,4 +54,6 @@ export default function Window({
       </div>
     </Draggable>
   );
-}
+};
+
+export default Window;
