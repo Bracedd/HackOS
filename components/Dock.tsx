@@ -1,6 +1,6 @@
 import Icon from '@hackclub/icons'
 import HighSeasApp from './apps/HighSeasApp'
-import LogbookApp from './apps/LogbookApp'
+import LogbookApp from './apps/LogBookApp'
 import CommunityApp from './apps/CommunityApp'
 import ShareApp from './apps/ShareApp'
 
