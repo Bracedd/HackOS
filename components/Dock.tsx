@@ -8,7 +8,7 @@ interface DockProps {
   onOpenWindow: (title: string, content: React.ReactNode) => void
 }
 
-type IconName = "compass" | "docs" | "community" | "share" | "search" | "ti"; // Add all the possible icon names here
+type IconName = "compass" | "docs" | "community" | "share" | "search" | "ti"; // Valid icon names
 
 interface AppIcon {
   icon: IconName; // Use the defined type for the icon
