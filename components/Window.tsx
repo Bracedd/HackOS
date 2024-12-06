@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import Draggable from 'react-draggable'
 
 interface WindowProps {
+  id: string   // Added the 'id' prop to the interface
   title: string
   isActive: boolean
   onClose: () => void
@@ -13,6 +14,7 @@ interface WindowProps {
 }
 
 export default function Window({ 
+  id,      // Ensure 'id' is passed as a prop
   title, 
   isActive, 
   onClose, 
