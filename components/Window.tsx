@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import React, { useRef } from 'react';
 import Draggable from 'react-draggable';
 
