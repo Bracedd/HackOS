@@ -1,53 +1,52 @@
-import { FaCompass, FaFileAlt, FaUsers, FaShareAlt } from 'react-icons/fa'
-import React from 'react'; 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCompass, faFileAlt, faUsers, faShareAlt } from '@fortawesome/free-solid-svg-icons'
 import HighSeasApp from './apps/HighSeasApp'
 import LogbookApp from './apps/LogBookApp'
 import CommunityApp from './apps/CommunityApp'
 import ShareApp from './apps/ShareApp'
 
 interface DockProps {
-  onOpenWindow: (title: string, content: React.ReactNode) => void
+  onOpenWindow: (title: string, content: React.ReactNode) => void;
 }
 
-type IconName = 'compass' | 'docs' | 'community' | 'share'; // Valid icon names
+type IconName = "compass" | "docs" | "community" | "share"; // Valid icon names
 
 interface AppIcon {
-  icon: IconName; // Use the defined type for the icon
+  icon: IconName;
   title: string;
   component: React.ReactNode;
+}
+
+const iconMap = {
+  compass: faCompass,
+  docs: faFileAlt,
+  community: faUsers,
+  share: faShareAlt,
 }
 
 export default function Dock({ onOpenWindow }: DockProps) {
   const apps: AppIcon[] = [
     { 
-      icon: 'compass', // This will now be recognized as a valid value
+      icon: 'compass',
       title: 'High Seas',
       component: <HighSeasApp />
     },
     { 
-      icon: 'docs', // This will now be recognized as a valid value
+      icon: 'docs',
       title: 'Logbook',
       component: <LogbookApp />
     },
     { 
-      icon: 'community', // This will now be recognized as a valid value
+      icon: 'community',
       title: 'Community',
       component: <CommunityApp />
     },
     { 
-      icon: 'share', // This will now be recognized as a valid value
+      icon: 'share',
       title: 'Share',
       component: <ShareApp />
     }
   ]
-
-  // Map icon names to Font Awesome icons
-  const iconMapping: Record<IconName, React.ElementType> = {
-    compass: FaCompass,
-    docs: FaFileAlt,
-    community: FaUsers,
-    share: FaShareAlt
-  };
 
   return (
     <div className="dock">
@@ -57,7 +56,7 @@ export default function Dock({ onOpenWindow }: DockProps) {
           className="dock-icon"
           onClick={() => onOpenWindow(app.title, app.component)}
         >
-          {React.createElement(iconMapping[app.icon], { size: 32 })} {/* Use the mapped Font Awesome icon */}
+          <FontAwesomeIcon icon={iconMap[app.icon]} size="2x" />
         </button>
       ))}
     </div>

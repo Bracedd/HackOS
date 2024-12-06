@@ -7,15 +7,22 @@ import Window from '../components/Window'
 import Image from 'next/image'
 
 export default function Desktop() {
-  const [windows, setWindows] = useState<Array<{ id: string; title: string; content: React.ReactNode }>>([])
+  const [windows, setWindows] = useState<Array<{ id: string; title: string; content: React.ReactNode; position: { x: number; y: number } }>>([])
   const [activeWindow, setActiveWindow] = useState<string | null>(null)
 
+  // Function to open a new window
   const openWindow = (title: string, content: React.ReactNode) => {
     const id = `window-${Date.now()}`
-    setWindows([...windows, { id, title, content }])
+
+    // Calculate the center of the screen for the window
+    const centerX = (window.innerWidth - 800) / 2;
+    const centerY = (window.innerHeight - 600) / 2;
+
+    setWindows([...windows, { id, title, content, position: { x: centerX, y: centerY } }])
     setActiveWindow(id)
   }
 
+  // Function to close a window
   const closeWindow = (id: string) => {
     setWindows(windows.filter(w => w.id !== id))
     if (activeWindow === id) {
@@ -34,7 +41,6 @@ export default function Desktop() {
           width={600}
           height={200}
           className="select-none pointer-events-none"
-          
         />
       </div>
 
@@ -47,9 +53,10 @@ export default function Desktop() {
           onClose={() => closeWindow(window.id)}
           onFocus={() => setActiveWindow(window.id)}
           style={{
-            top: `${100 + index * 30}px`,
-            left: `${100 + index * 30}px`,
-            zIndex: activeWindow === window.id ? 50 : index + 1
+            top: `${window.position.y}px`,
+            left: `${window.position.x}px`,
+            zIndex: activeWindow === window.id ? 50 : index + 1,
+            position: 'absolute',
           }}
         >
           {window.content}
@@ -60,4 +67,3 @@ export default function Desktop() {
     </main>
   )
 }
-
