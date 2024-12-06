@@ -46,7 +46,7 @@ export default function ShareApp() {
             rel="noopener noreferrer"
             className="p-3 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
           >
-            <Icon glyph={link.icon as any} size={24} />
+            <Icon glyph={link.icon} size={24} />
           </a>
         ))}
       </div>
@@ -70,4 +70,3 @@ export default function ShareApp() {
     </div>
   )
 }
-
