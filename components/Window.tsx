@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef } from 'react';
 import Draggable from 'react-draggable';
 
 interface WindowProps {
@@ -21,21 +21,18 @@ export default function Window({
   children 
 }: WindowProps) {
   
-  // Explicitly type the ref to handle HTMLElement or null
-  const nodeRef = useRef<HTMLDivElement | null>(null)
+  // Explicitly include "null" and specify the element type as HTMLDivElement
+  const nodeRef = useRef<HTMLDivElement>(null);
 
-  // Optional: Log or use the id if needed
-  console.log('Window ID:', id);
-  
   return (
     <Draggable
       handle=".window-header"
-      nodeRef={nodeRef}
+      nodeRef={nodeRef}  // Pass the ref to Draggable
       bounds="parent"
       onMouseDown={onFocus}
     >
       <div
-        ref={nodeRef}
+        ref={nodeRef} // Use ref here
         className={`window ${isActive ? 'shadow-2xl' : 'shadow-xl'}`}
         style={{
           ...style,
