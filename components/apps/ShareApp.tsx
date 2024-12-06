@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import Icon from '@hackclub/icons'
+import { FaTwitter, FaGithub, FaSlack } from 'react-icons/fa'
 
 export default function ShareApp() {
   const [copied, setCopied] = useState(false)
@@ -10,17 +10,17 @@ export default function ShareApp() {
     {
       name: 'Twitter',
       url: 'https://twitter.com/intent/tweet?text=Join%20me%20at%20the%20High%20Seas%20Hackathon!%20https://highseas.hackclub.com',
-      icon: 'twitter'
+      icon: FaTwitter
     },
     {
       name: 'GitHub',
       url: 'https://github.com/hackclub/',
-      icon: 'github'
+      icon: FaGithub
     },
     {
       name: 'Slack',
       url: 'https://hackclub.com/slack',
-      icon: 'slack'
+      icon: FaSlack
     }
   ]
 
@@ -46,7 +46,7 @@ export default function ShareApp() {
             rel="noopener noreferrer"
             className="p-3 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
           >
-            <Icon glyph={link.icon} size={24} />
+            <link.icon size={24} />
           </a>
         ))}
       </div>

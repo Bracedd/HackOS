@@ -1,4 +1,5 @@
-import Icon from '@hackclub/icons'
+import { FaCompass, FaFileAlt, FaUsers, FaShareAlt } from 'react-icons/fa'
+import React from 'react'; 
 import HighSeasApp from './apps/HighSeasApp'
 import LogbookApp from './apps/LogBookApp'
 import CommunityApp from './apps/CommunityApp'
@@ -8,7 +9,7 @@ interface DockProps {
   onOpenWindow: (title: string, content: React.ReactNode) => void
 }
 
-type IconName = "compass" | "docs" | "community" | "share" | "search" | "ti"; // Valid icon names
+type IconName = 'compass' | 'docs' | 'community' | 'share'; // Valid icon names
 
 interface AppIcon {
   icon: IconName; // Use the defined type for the icon
@@ -40,6 +41,14 @@ export default function Dock({ onOpenWindow }: DockProps) {
     }
   ]
 
+  // Map icon names to Font Awesome icons
+  const iconMapping: Record<IconName, React.ElementType> = {
+    compass: FaCompass,
+    docs: FaFileAlt,
+    community: FaUsers,
+    share: FaShareAlt
+  };
+
   return (
     <div className="dock">
       {apps.map((app) => (
@@ -48,7 +57,7 @@ export default function Dock({ onOpenWindow }: DockProps) {
           className="dock-icon"
           onClick={() => onOpenWindow(app.title, app.component)}
         >
-          <Icon glyph={app.icon} size={32} /> {/* Use the icon name in 'glyph' */}
+          {React.createElement(iconMapping[app.icon], { size: 32 })} {/* Use the mapped Font Awesome icon */}
         </button>
       ))}
     </div>
