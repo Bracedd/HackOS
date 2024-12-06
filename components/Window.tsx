@@ -24,13 +24,14 @@ const Window: React.FC<WindowProps> = ({
   const nodeRef = useRef<HTMLDivElement>(null); // Updated useRef type
 
   return (
-    
+
     <Draggable
       handle=".window-header"
-      nodeRef={nodeRef} // Pass the ref to Draggable
+      nodeRef={nodeRef as React.RefObject<HTMLElement>} // Pass the ref to Draggable
       bounds="parent"
       onMouseDown={onFocus} // Focus the window on mouse down
     >
+
       <div
         ref={nodeRef} // Attach ref to the div
         className={`window ${isActive ? 'shadow-2xl' : 'shadow-xl'}`}
